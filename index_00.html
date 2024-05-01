@@ -1,0 +1,166 @@
+<html>
+  <head>
+    <style>
+      *, *::after, *::before {
+        box-sizing: border-box;
+        font-family: "Arial Black";
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+      header {
+        font-size: 45;
+        font-family: "Arial Black";
+      }
+      footer {
+        margin-top: 50px;
+        margin-right: 120px;
+        align-self: flex-end;
+        font-size: 12;
+        cursor: pointer;
+        transition: transform 1s;
+      }
+      footer:hover {
+        transform: scale(1.5);
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+      .mucha {
+        border: 0px solid red;
+        width: 200px;
+        height: 200px;
+        position: relative;
+        transition: transform 1s;
+      }
+      .mucha:hover {
+        transform: scale(1.5);
+        z-index: 2;
+      }
+      .mucha .text {
+        text-align: center;
+        bottom: 0px;
+        width: 100%;
+        position: absolute;
+        font-size: 20;
+      }
+      .mucha .body {
+        --r: 80;
+        position: absolute;
+        left: calc(50% - var(--r) * 0.5px);
+        top: calc(50% - var(--r) * 0.5px);
+        width: calc(var(--r) * 1px);
+        height: calc(var(--r) * 1px);
+        border-radius: 50%;
+        border: 3px solid black;
+        background: radial-gradient(circle at 25% 25%, #a0a0a0,black);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        flex-wrap: wrap;
+        gap: 1px;
+      }
+      .mucha .body .eye{
+        --r: 30;
+        position: relative;
+        /*left: calc(50% - var(--r) * 0.5px);
+        top: calc(50% - var(--r) * 0.5px);*/
+        width: calc(var(--r) * 1px);
+        height: calc(var(--r) * 1px);
+        border-radius: 50%;
+        border: 2px solid black;
+        background: radial-gradient(circle at 25% 25%, hsl(192, 10%, 100%),hsl(192, 49%, 82%));
+      }
+      .mucha .body .eye::after{
+        content: "";
+        --rp: 10;
+        position: absolute;
+        left: calc(60% - var(--rp) * 0.5px);
+        top: calc(60% - var(--rp) * 0.5px);
+        width: calc(var(--rp) * 1px);
+        height: calc(var(--rp) * 1px);
+        border-radius: 50%;
+        border: 1px solid black;
+        background: radial-gradient(circle at 25% 25%, hsl(192, 10%, 100%) 0%,hsl(0, 0%, 0%) 30%);
+      }
+      .mucha .wing {
+        position: absolute;
+        --w: calc(80 * 5/4);
+        --h: calc(80 * 2/3);
+        left: calc(50% - var(--w) * 0.5px);
+        top: calc(50% - var(--h) * 0.5px);
+        width: calc(var(--w) * 1px);
+        height: calc(var(--h) * 1px);
+        border-radius: 50%;
+        border: 4px solid black;
+        transform: rotate(90deg) rotate(calc(var(--a) * 1deg)) translate(-70px,0px);
+        background: linear-gradient(hsl(0, 0%, 30%), hsl(0, 0%, 60%));
+        animation: wing-flap calc(var(--anim-speed) * 1ms) linear infinite alternate;
+      }
+
+      @property --aa {syntax: '<number>'; initial-value: 0; inherits: true;}
+      @keyframes wing-flap {
+        from {
+          --aa: 45;
+        }
+        to {
+          --aa: 120;
+        }
+        
+      }
+    </style>
+  </head>
+  <body>
+    <header>Evolution of Mucha</header>
+    <div class="container">
+      <div class="mucha" style="--anim-speed: 300;">
+        <div class="wing" style="--a: calc(+0.9 * var(--aa) - 2); --aa: +46"></div>
+        <div class="wing" style="--a: calc(-0.9 * var(--aa) + 2); --aa: +46"></div>
+        <div class="wing" style="--a: calc(+1.0 * var(--aa) - 0); --aa: +45"></div>
+        <div class="wing" style="--a: calc(-1.0 * var(--aa) + 0); --aa: +45"></div>
+        <div class="body">
+          <div class="eye"></div>
+        </div>
+        <div class="text">Mono</div>
+      </div>
+      <div class="mucha" style="--anim-speed: 280;">
+        <div class="wing" style="--a: calc(+0.9 * var(--aa) - 2); --aa: +46"></div>
+        <div class="wing" style="--a: calc(-0.9 * var(--aa) + 2); --aa: +46"></div>
+        <div class="wing" style="--a: calc(+1.0 * var(--aa) - 0); --aa: +45"></div>
+        <div class="wing" style="--a: calc(-1.0 * var(--aa) + 0); --aa: +45"></div>
+        <div class="body">
+          <div class="eye"></div>
+          <div class="eye"></div>
+        </div>
+        <div class="text">Stereo</div>
+      </div>
+      <div class="mucha" style="--anim-speed: 290;">
+        <div class="wing" style="--a: calc(+0.9 * var(--aa) - 2); --aa: +46"></div>
+        <div class="wing" style="--a: calc(-0.9 * var(--aa) + 2); --aa: +46"></div>
+        <div class="wing" style="--a: calc(+1.0 * var(--aa) - 0); --aa: +45"></div>
+        <div class="wing" style="--a: calc(-1.0 * var(--aa) + 0); --aa: +45"></div>
+        <div class="body">
+          <div class="eye" style="--r: 22;"></div>
+          <div class="eye" style="--r: 22;"></div>
+          <div class="eye" style="--r: 22;"></div>
+          <div class="eye" style="--r: 22;"></div>
+          <div class="eye" style="--r: 22;"></div>
+          <div class="eye" style="--r: 22;"></div>
+          <div class="eye" style="--r: 22;"></div>
+          <div class="eye" style="--r: 22;"></div>
+          <div class="eye" style="--r: 22;"></div>
+        </div>
+        <div class="text">Lightfield</div>
+      </div>
+    </div>
+    <footer>Future is comming...</footer>
+  </body>
+</html>
